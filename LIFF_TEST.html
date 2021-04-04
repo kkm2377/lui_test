@@ -4,26 +4,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Call my name</title>
         <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-        <div>Hello2 <span id="name">world</span>.</div>
-   </body>
+</head>
+<body>
+    <div>Hello3 <span id="name">world</span>.</div>
+</body>
     <!-- LIFF SDK の読み込み -->
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
         // LIFFの初期化を行う
         liff.init({
-           liffId: "1655821834-xg4aVz10"
-        }).then(() => { 
-           liff.getProfile().then(profile => { 
+        // 自分のLIFF ID（URLから『https://liff.line.me/』を除いた文字列）を入力する
+        liffId: "1655821834-xg4aVz10"
+        
+        }).then(() => { // 初期化完了. 以降はLIFF SDKの各種メソッドを利用できる
+        
+        // 利用者のLINEアカウントのプロフィール名を取得
+        liff.getProfile().then(profile => {
+        
         // プロフィール名
-              const name = profile.displayName
+        const name = profile.displayName
+        
         // HTMLに挿入
-              document.querySelector("#name").innerText = name
-           })
-　　　　　　.catch((err) => {
-              console.log('error', err)
-       　　　})
-     　　})
+        document.querySelector("#name").innerText = name
+        })
+        .catch((err) => {
+            console.log('error', err)
+        })
+        })
     </script>
 </html>
