@@ -46,16 +46,15 @@
                               '○ Create URL\n' +
                               'liff.permanentLink.createUrl()=' + liff.permanentLink.createUrl() + '\n' ;
                         });
-                        document.getElementById('logout').addEventListener('click', () => {
-                            liff.logout();
+                        document.getElementById('popup').addEventListener('click', () => {
+                            liff.openWindow({
+                                url: "https://liff.line-beta.me/1651833066-zO3vlq60",
+                                external: true
+                            });
                         });
                         document.getElementById('message').addEventListener('click', () => {
 
-                                liff.sendMessages([
-                                    {
-                                        type: 'text',
-                                        text: 'Hello, World!'
-                                    }
+                                https://liff.line-beta.me/1651833066-zO3vlq60
                                 ]);
                         });
                         document.getElementById('flex').addEventListener('click', () => {
@@ -159,7 +158,7 @@
     <div>
       <h3>環境やトークルームの情報を取得</h3>
       <input type="button" id="go" value="実行"/>
-      <input type="button" id="logout" value="ログアウト"/>
+      <input type="button" id="popup" value="popup"/>
       <input type="button" id="message" value="Message"/>
       <input type="button" id="flex" value="flex"/>
       <textarea id="log" style="width:96%;height:350px;"></textarea>
