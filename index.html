@@ -1,35 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp" dir="ltr">
     <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Call my name</title>
+        <title>beta-LIFF</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://line-objects-internal.com/assets/liff/edge/versions/2.4.1/sdk.js"></script>
+        <script type="text/javascript">
+            /**
+            * Initialize LIFF
+            * @param {string} myLiffId The LIFF app ID of the selected element
+            */
+            document.addEventListener("DOMContentLoaded", () => {
+                liff
+                    .init({
+                        liffId: "1651834921-5QBvmKAb"
+                    })
+                    .then(() => {
+                        document.getElementById('go').addEventListener('click', () => {
+                            document.getElementById('log').value =
+                              '○言語設定\n' +
+                              'liff.getLanguage()=' + liff.getLanguage() + '\n' +
+                              '○LIFF SDKのバージョン\n' +
+                              'liff.getVersion()=' + liff.getVersion() + '\n' +
+                              '○LIFF LINEのバージョン\n' +
+                              'liff.getLineVersion()=' + liff.getLineVersion() + '\n' +
+                              '○LINE内ブラウザで動作させているかどうか\n' +
+                              'liff.isInClient()=' + liff.isInClient() + '\n' +
+                              '○ログインしているかどうか\n' +
+                              'liff.isLoggedIn()=' + liff.isLoggedIn() + '\n' +
+                              '○OS\n' +
+                              'liff.getOS()=' + liff.getOS() + '\n' +
+                              '○アクセストークン\n' +
+                              'liff.getAccessToken()=' + liff.getAccessToken() + '\n' +
+                              '○Get ID Token\n' +
+                              'liff.getIDToken()=' + liff.getIDToken() + '\n' +
+                              '○画面（1対1のチャット、グループ、またはトークルーム）を一意に識別する値\n' +
+                              'liff.getContext()=' + JSON.stringify(liff.getContext()) + '\n' +
+                              '○ユーザー名等\n' +
+                              'liff.getDecodedIDToken()=' + JSON.stringify(liff.getDecodedIDToken()) + '\n\n\n' +
+
+
+                              '○ ユーザーのプロフィール\n' +
+                              'liff.getProfile()=' + JSON.stringify(liff.getProfile()) + '\n' +
+                              '○ Create URL\n' +
+                              'liff.permanentLink.createUrl()=' + liff.permanentLink.createUrl() + '\n' ;
+                        });
+                        document.getElementById('logout').addEventListener('click', () => {
+                            liff.logout();
+                        });
+                        document.getElementById('message').addEventListener('click', () => {
+
+                                liff.sendMessages([
+                                    {
+                                        type: 'text',
+                                        text: 'Hello, World!'
+                                    }
+                                ]);
+                        });
+                        document.getElementById('flex').addEventListener('click', () => {
+                            liff.sendMessages([{
+                                "type": "flex",
+                                "altText": "This is a Flex Message",
+                                "contents":
+                            {
+                                "type": "bubble",
+                                "header": {
+                                  "type": "box",
+                                  "layout": "vertical",
+                                  "contents": [
+                                    {
+                                      "type": "text",
+                                      "text": "LINE Corp",
+                                      "color": "#FFFFFF",
+                                      "weight": "bold"
+                                    }
+                                  ]
+                                },
+                                "hero": {
+                                  "type": "image",
+                                  "url": "https://obs-beta.line-scdn.net/0hi2dU1wubNh1ZLCCnLGVJSntxPX9qTigWexgyezx-HU0oSQRLLjEmH3RQDVY_TwQ3LjUyJidHHkkyYAMgZiscAyB8DSw8dDc/f256x256",
+                                  "size": "xl"
+                                },
+                                "body": {
+                                  "type": "box",
+                                  "layout": "vertical",
+                                  "contents": [
+                                    {
+                                      "type": "text",
+                                      "text": "hogehoge",
+                                      "size": "xl",
+                                      "weight": "bold",
+                                      "align": "center"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "text": "LINE Corp Developer",
+                                      "align": "center"
+                                    },
+                                    {
+                                      "type": "separator",
+                                      "margin": "md"
+                                    },
+                                    {
+                                      "type": "box",
+                                      "layout": "vertical",
+                                      "contents": [
+                                        {
+                                          "type": "button",
+                                          "action": {
+                                            "type": "uri",
+                                            "label": "LINE Corp Official Site",
+                                            "uri": "http://linecorp.com/"
+                                          },
+                                          "style": "link"
+                                        },
+                                        {
+                                          "type": "button",
+                                          "action": {
+                                            "type": "uri",
+                                            "label": "Sign in as a User",
+                                            "uri": "http://linecorp.com/"
+                                          },
+                                          "style": "link"
+                                        },
+                                        {
+                                          "type": "button",
+                                          "action": {
+                                            "type": "uri",
+                                            "label": "Ask me on the Call",
+                                            "uri": "https://line.me/R/call/81/08012345678"
+                                          },
+                                          "style": "link"
+                                        }
+                                      ],
+                                      "paddingTop": "10px"
+                                    }
+                                  ]
+                                },
+                                "styles": {
+                                  "header": {
+                                    "backgroundColor": "#00B900"
+                                  }
+                                }
+                            }
+                              }]);
+                        });
+                    })
+                    .catch((err) => {
+                        document.getElementById("liffAppContent").classList.add('hidden');
+                        document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+                        console.log(err.code, err.message);
+                    });
+            })
+        </script>
 </head>
 <body>
-    <div>Hello <span id="name">world</span>.</div>
-</body>
-    <!-- LIFF SDK の読み込み -->
-    <script charset="utf-8" src="https://line-objects-internal.com/assets/liff/edge/versions/2.4.1/sdk.js"></script>
-    <script>
-        // LIFFの初期化を行う
-        liff.init({
-        // 自分のLIFF ID（URLから『https://liff.line.me/』を除いた文字列）を入力する
-        liffId: "1651834921-5QBvmKAb"
-        
-        }).then(() => { // 初期化完了. 以降はLIFF SDKの各種メソッドを利用できる
-        
-        // 利用者のLINEアカウントのプロフィール名を取得
-        liff.getProfile().then(profile => {
-        
-        // プロフィール名
-        const name = profile.displayName
-        
-        // HTMLに挿入
-        document.querySelector("#name").innerText = name
-        })
-        .catch((err) => {
-            console.log('error', err)
-        })
-        })
-    </script>
+    <div>
+      <h3>環境やトークルームの情報を取得</h3>
+      <input type="button" id="go" value="実行"/>
+      <input type="button" id="logout" value="ログアウト"/>
+      <input type="button" id="message" value="Message"/>
+      <input type="button" id="flex" value="flex"/>
+      <textarea id="log" style="width:96%;height:350px;"></textarea>
+    </div>
+  </body>
 </html>
