@@ -17,7 +17,23 @@
                         liffId: "1651833066-0omDANP2"
                     })
                     .then(() => {
+                        document.getElementById('home').addEventListener('click', () => {
+                            liff.addToHomeScreen({
+                                name: "LINE",
+                                iconUrl: "https://obs-beta.line-scdn.net/0hi2dU1wubNh1ZLCCnLGVJSntxPX9qTigWexgyezx-HU0oSQRLLjEmH3RQDVY_TwQ3LjUyJidHHkkyYAMgZiscAyB8DSw8dDc/f256x256",
+                                state: "https://liff.line-beta.me/1651833066-0omDANP2"
+                            }).then((status) => {
+    // status == -1:  // canceled. If user cancel to add, return -1 (only Android under 8)
+    // status == 0:   // unknown. iOS always return 0
+    // status == 1:   // added. If shortcut created, return 1 (Android above 8 will always be 1)
+                            }).catch((err: LiffError) => {
+    // Error happens during create shorcut (permission error, etc...)
+                                 console.log(err.code, err.message);
+                            });
+                        });
                         document.getElementById('go').addEventListener('click', () => {
+                            
+ 
                             document.getElementById('log').value =
                               '○言語設定\n' +
                               'liff.getLanguage()=' + liff.getLanguage() + '\n' +
