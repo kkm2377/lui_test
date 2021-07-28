@@ -50,6 +50,28 @@
                                 external: true
                             });
                         });
+                    
+                    
+                    
+                    
+                    document.getElementById('home').addEventListener('click', () => {
+                            liff.addToHomeScreen({
+                                name: "LINE",
+                                iconUrl: "https://obs.line-apps.com/icon.png",
+                                state: "/search?q=foo"
+                            }).then((status) => {
+                                // status == -1:  // canceled. If user cancel to add, return -1 (only Android under 8)
+                                // status == 0:   // unknown. iOS always return 0
+                                // status == 1:   // added. If shortcut created, return 1 (Android above 8 will always be 1)
+                            }).catch((err: LiffError) => {
+                                // Error happens during create shorcut (permission error, etc...)
+                                console.log(err.code, err.message);
+                            });
+                        });
+                    
+                    
+                    
+                    
                         document.getElementById('message').addEventListener('click', () => {
 
                         });
@@ -157,6 +179,7 @@
           <input type="submit" value="Submit">
       </form>
       <h3>環境やトークルームの情報を取得</h3>
+      <input type="button" id="home" value="home"/>
       <input type="button" id="go" value="実行"/>
       <input type="button" id="popup" value="popup"/>
       <input type="button" id="message" value="Message"/>
