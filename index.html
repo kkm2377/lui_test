@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>liff-beta2</title>
+        <title>liff-Real</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
         <script type="text/javascript">
@@ -46,28 +46,31 @@
                         });
                         document.getElementById('popup').addEventListener('click', () => {
                             liff.openWindow({
-                                url: "https://liff.line-beta.me/1651833066-zO3vlq60",
+                                url: "https://liff.line-beta.me/1655828362-KLxYgqxg",
                                 external: true
                             });
                         });
-                    
-                    
-                    
-                    
+
                         document.getElementById('home').addEventListener('click', () => {
                             liff.addToHomeScreen({
                                 name: "LINE",
                                 iconUrl: "https://obs-beta.line-scdn.net/0hi2dU1wubNh1ZLCCnLGVJSntxPX9qTigWexgyezx-HU0oSQRLLjEmH3RQDVY_TwQ3LjUyJidHHkkyYAMgZiscAyB8DSw8dDc/f256x256",
                                 state: "https://liff.line-beta.me/1651833066-0omDANP2"
-                        });
                             });
-                    
-                    
-                    
-                    
+                        });
+
                         document.getElementById('message').addEventListener('click', () => {
 
                         });
+                    
+                        document.getElementById('qrcode').addEventListener('click', () => {
+                            if (liff.scanCode) {
+                                liff.scanCode().then(result => {
+                                    result = { value: '' }
+                                });
+                            }
+                        });
+
                         document.getElementById('flex').addEventListener('click', () => {
                             liff.sendMessages([{
                                 "type": "flex",
@@ -161,7 +164,7 @@
                         document.getElementById("liffAppContent").classList.add('hidden');
                         document.getElementById("liffInitErrorMessage").classList.remove('hidden');
                         console.log(err.code, err.message);
-                    });
+                    })
             })
         </script>
 </head>
@@ -177,6 +180,7 @@
       <input type="button" id="popup" value="popup"/>
       <input type="button" id="message" value="Message"/>
       <input type="button" id="flex" value="flex"/>
+      <input type="button" id="qrcode" value="QRcode"/>
       <a href="https://android-liff-test.herokuapp.com/index.html" target="_blank">IAB</a>
       <textarea id="log" style="width:96%;height:350px;"></textarea>
     </div>
