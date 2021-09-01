@@ -59,8 +59,21 @@
                             });
                         });
 
-                        document.getElementById('message').addEventListener('click', () => {
-
+                        document.getElementById('pic').addEventListener('click', () => {
+                            var videoDom = document.getElementById('video');
+                            var constraints = window.constraints = {
+                                audio: false,
+                                video: true
+                            };
+                            navigator.mediaDevices.getUserMedia(constraints)
+                                .then(function(stream) {
+                                console.log("got video stream");
+                                videoDom.srcObject = stream;
+                                videoDom.play();
+                            })
+                                .catch(function(error) {
+                                console.error("error: ", error);
+                            });
                         });
                     
                         document.getElementById('qrcode').addEventListener('click', () => {
@@ -181,6 +194,8 @@
       <input type="button" id="message" value="Message"/>
       <input type="button" id="flex" value="flex"/>
       <input type="button" id="qrcode" value="QRcode"/>
+      <input type="button" id="pic" value="pic"/>
+      <video id="video" autoplay style="width: 500px; height: 500px;">Video stream not available.</video>
       <a href="https://android-liff-test.herokuapp.com/index.html" target="_blank">IAB</a>
       <textarea id="log" style="width:96%;height:350px;"></textarea>
     </div>
