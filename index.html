@@ -6,6 +6,9 @@
         <title>liff-beta</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://line-objects-internal.com/assets/liff/edge/2/sdk.js"></script>
+        <script type="module" src="https://line-objects-internal.com/assets/lui/edge/versions/1.11.0/luivendor.js"></script>
+        <script type="module" src="https://line-objects-internal.com/assets/lui/edge/versions/1.11.0/lui-navigation-back.js"></script>
+        <script type="module" src="https://line-objects-internal.com/assets/lui/edge/versions/1.11.0/lui-navigation-bar.js"></script>
         <script type="text/javascript">
             /**
             * Initialize LIFF
@@ -182,6 +185,20 @@
         </script>
 </head>
 <body>
+    
+    <div class="content light-background-container">
+  <lui-navigation-bar-spacer></lui-navigation-bar-spacer>
+  <lui-navigation-bar menu-style="darkTranslucent">
+    <lui-navigation-back slot="left"></lui-navigation-back>
+    <h1 slot="center">very long titleeeeeeeeeeeeee</h1>
+  </lui-navigation-bar>
+  <div class="content" style="padding: 10px 20px; color: white;">
+    <p>
+      ${generateDummyText()}
+    </p>
+  </div>
+</div>
+    
       <div>
       <h2>HTML Forms to https://httpbin.org/post with no parameter</h2>
       <form action="https://httpbin.org/post" method="post">
