@@ -185,32 +185,13 @@
         </script>
 </head>
 <body>
-    <div class="content light-background-container">
-  <lui-navigation-bar-spacer></lui-navigation-bar-spacer>
-  <lui-navigation-bar menu-style="darkTranslucent">
-    <lui-navigation-back slot="left"></lui-navigation-back>
-    <h1 slot="center">very long titleeeeeeeeeeeeee</h1>
-  </lui-navigation-bar>
-  <div class="content" style="padding: 10px 20px; color: white;">
-    <p>
-      ${generateDummyText()}
-    </p>
-      <h2>HTML Forms to https://httpbin.org/post with no parameter</h2>
-      <form action="https://httpbin.org/post" method="post">
-          <input type="submit" value="Submit">
-      </form>
-      <h3>環境やトークルームの情報を取得222</h3>
-      <input type="button" id="home" value="home"/>
-      <input type="button" id="go" value="実行"/>
-      <input type="button" id="popup" value="popup"/>
-      <input type="button" id="pic" value="pic"/>
-      <input type="button" id="flex" value="flex"/>
-      <input type="button" id="qrcode" value="QRcode"/>
-      
-      <video id="video" autoplay style="width: 500px; height: 500px;">Video stream not available.</video>
-      <a href="https://android-liff-test.herokuapp.com/index.html" target="_blank">IAB</a>
-      <textarea id="log" style="width:96%;height:350px;"></textarea>
-  </div>
-</div>
+<lui-navigation-bar platform="universal">
+  <lui-navigation-back slot="left" id="backbutton"/> // shown in the left of the header in iOS
+  <h1 slot="center"> // shown in the center of the header in iOS
+     <img src="https://cp_origin.com/file/path/to/title.png">
+  </h1>
+  <!-- `right` will be covered with FullFlex buttons. Please don't set anything -->
+  <!-- <div slot="right"/> -->
+</lui-navigation-bar>
   </body>
 </html>
